@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CompoundView">
+        <attr name="rightText" format="string" />
+        <attr name="leftText" format="string" />
+
+        <attr name="rightImage" format="reference" />
+        <attr name="leftImage" format="reference" />
+    </declare-styleable>
+
+    <item name="compound_item" type="id" />
+    <item name="compound_left" type="id" />
+    <item name="compound_right" type="id" />
+
+    <dimen name="compound_button_corner_radius">0dp</dimen>
+    <dimen name="compound_button_horizontal_padding">4dp</dimen>
+    <dimen name="compound_button_vertical_padding">2dp</dimen>
+    <dimen name="compound_button_stroke_width">0dp</dimen>
+    <dimen name="compound_button_text_size">8dp</dimen>
+    <dimen name="compound_button_min_height">20dp</dimen>
+    <dimen name="compound_button_min_width">20dp</dimen>
+
+    <color name="colorAccent">#0000FF</color>
+    <color name="compound_button_disabled">#999999</color>
+    <color name="compound_button_stroke">#00000000</color>
+
+    <style name="ClickableCompoundView" parent="android:Widget.Button" >
+        <item name="android:background">@drawable/compound_button</item>
+        <item name="android:textSize">@dimen/compound_button_text_size</item>
+        <item name="android:paddingTop">@dimen/compound_button_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/compound_button_vertical_padding</item>
+        <item name="android:paddingLeft">@dimen/compound_button_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/compound_button_horizontal_padding</item>
+        <item name="android:minHeight">@dimen/compound_button_min_height</item>
+        <item name="android:minWidth">@dimen/compound_button_min_width</item>
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+</resources>

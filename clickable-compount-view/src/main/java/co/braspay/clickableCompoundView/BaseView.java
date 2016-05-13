@@ -53,6 +53,8 @@ abstract class BaseView extends RelativeLayout {
 
         createMainItem(context, attrs, defStyleAttr, defStyleRes);
         createCompoundButtons(context, attrs);
+
+        setPadding(0, 0, 0, 0);
     }
 
     private void createMainItem(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -61,6 +63,7 @@ abstract class BaseView extends RelativeLayout {
 
         itemView = createItemView(context, attrs, defStyleAttr, defStyleRes);
         itemView.setId(R.id.compound_item);
+
         addView(itemView, params);
     }
 
@@ -96,6 +99,7 @@ abstract class BaseView extends RelativeLayout {
     private void configAndAddLeftCompoundView(View compoundView) {
         LayoutParams params = (LayoutParams) compoundView.getLayoutParams();
         params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        params.setMargins(getPaddingLeft(), 0, 0, 0);
 
         addView(compoundView, params);
         compoundView.setId(R.id.compound_left);
@@ -105,6 +109,7 @@ abstract class BaseView extends RelativeLayout {
     private void configAndAddRightCompoundView(View compoundView) {
         LayoutParams params = (LayoutParams) compoundView.getLayoutParams();
         params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        params.setMargins(0, 0, getPaddingRight(), 0);
 
         addView(compoundView, params);
         compoundView.setId(R.id.compound_right);
@@ -133,15 +138,17 @@ abstract class BaseView extends RelativeLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int leftPadding = itemView.getPaddingLeft();
-        int rightPadding = itemView.getPaddingRight();
+        int leftPadding = itemView.getCompoundDrawablePadding();
+        int rightPadding = itemView.getCompoundDrawablePadding();
 
         if (leftCompound != null && leftPadding < leftCompound.getWidth()) {
             leftPadding += leftCompound.getWidth();
+            leftPadding += ((LayoutParams) leftCompound.getLayoutParams()).leftMargin;
         }
 
         if (rightCompound != null && rightPadding < rightCompound.getWidth()) {
             rightPadding += rightCompound.getWidth();
+            rightPadding += ((LayoutParams) rightCompound.getLayoutParams()).rightMargin;
         }
 
         itemView.setPadding(leftPadding, itemView.getPaddingTop(), rightPadding, itemView.getPaddingBottom());

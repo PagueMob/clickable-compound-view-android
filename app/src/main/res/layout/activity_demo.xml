@@ -25,6 +25,9 @@
         android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="5dp"
+        android:drawablePadding="5dp"
         android:maxLines="1"
         android:singleLine="true"
         android:hint="Hello World!"
@@ -69,6 +72,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Hello World!"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:drawableLeft="@drawable/ic_show"
         android:drawableRight="@drawable/ic_show"/>
 </LinearLayout>
